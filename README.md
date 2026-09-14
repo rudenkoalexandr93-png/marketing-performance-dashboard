@@ -30,12 +30,20 @@ Google Ads + Facebook Ads
                  ↓
 UTM campaign extraction / cleaning
                  ↓
-Aggregated marketing dataset
+Detailed marketing dataset
                  ↓
         Tableau dashboard
 ```
 
 The SQL workflow standardizes both advertising sources into one analytical table and keeps campaign, ad set, source and UTM dimensions available for dashboard filtering.
+
+## 💻 SQL Queries
+
+- **Main query:** [marketing_performance.sql](sql/marketing_performance.sql) — the author's preferred second variant, retaining detailed rows for aggregation in Tableau.
+- **Aggregated alternative:** [marketing_performance_aggregated.sql](sql/marketing_performance_aggregated.sql) — the first variant, grouped by date, source, campaign, ad set and UTM campaign.
+- [Execution instructions and metric definitions](sql/README.md).
+
+Each script includes the temporary URL-decoding function. Execute the function and query in the same PostgreSQL session. In the main query, `total_*` are column aliases; aggregation happens in Tableau.
 
 ## 📌 KPI Framework
 
@@ -118,7 +126,9 @@ marketing-performance-dashboard/
 ├── images/
 │   └── marketing-performance-dashboard.png
 ├── sql/
-│   └── README.md
+│   ├── README.md
+│   ├── marketing_performance.sql
+│   └── marketing_performance_aggregated.sql
 └── tableau/
     └── README.md
 ```
